@@ -1,0 +1,8 @@
+name: 'bumpversion'
+description: 'run bump2version if #major, #minor or #patch are found in the last commit message'
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/bumpversion.sh
+      shell: bash
