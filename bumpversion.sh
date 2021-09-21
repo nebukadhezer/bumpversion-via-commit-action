@@ -1,7 +1,9 @@
-git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@mackevision.com"
+[[ -z "${BUMP_USER}" ]] && BUMP_USER=${GITHUB_ACTOR} || BUMP_USER="${BUMP_USER}"
+[[ -z "${BUMP_EMAIL}" ]] && BUMP_EMAIL="${GITHUB_ACTOR}@mackevision.com" || BUMP_EMAIL="${BUMP_EMAIL}"
+git config user.name "${BUMP_USER}"
+git config user.email "${BUMP_EMAIL}"
 git config --global push.followTags true
-git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}
+git remote set-url origin https://${BUMP_user}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}
 LAST_COMMIT=$(git log -1 --pretty=%B)
 if [ -z "${LAST_COMMIT}" ]; then
 echo "no commit message found exiting"
