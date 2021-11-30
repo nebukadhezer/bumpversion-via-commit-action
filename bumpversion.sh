@@ -27,7 +27,7 @@ python -m pip install --upgrade pip
 pip install bump2version
 python -m bumpversion $BUMP_LEVEL --verbose
 git push
-#git fetch --unshallow
-#git checkout master
-#git merge develop
-#git push
+git fetch --unshallow
+git checkout master
+git merge develop
+git push
